@@ -1,4 +1,4 @@
-window.mediaCheck = (options) ->
+mediaCheck = (options) ->
   mq = undefined
   mqChange = undefined
   createListener = undefined
@@ -106,3 +106,13 @@ window.mediaCheck = (options) ->
         window.attachEvent "onresize", mmListener
 
     mmListener()
+
+if typeof define == 'function' && define.amd
+  define( [
+    'mediaCheck'
+  ], mediaCheck )
+else if typeof module == 'object' && module.exports
+  module.exports = mediaCheck
+else
+  window.mediaCheck = mediaCheck
+    

@@ -1,16 +1,7 @@
-/*                    _ _        ____ _               _
-   _ __ ___   ___  __| (_) __ _ / ___| |__   ___  ___| | __
-  | '_ ` _ \ / _ \/ _` | |/ _` | |   | '_ \ / _ \/ __| |/ /
-  | | | | | |  __/ (_| | | (_| | |___| | | |  __/ (__|   <
-  |_| |_| |_|\___|\__,_|_|\__,_|\____|_| |_|\___|\___|_|\_\
-
-  http://github.com/sparkbox/mediaCheck
-
-  Version: 0.4.6, 12-02-2015
-  Author: Rob Tarr (http://twitter.com/robtarr)
-*/
 (function() {
-  window.mediaCheck = function(options) {
+  var mediaCheck;
+
+  mediaCheck = function(options) {
     var breakpoints, checkQuery, convertEmToPx, createListener, getPXValue, hasMatchMedia, i, mmListener, mq, mqChange;
     mq = void 0;
     mqChange = void 0;
@@ -135,5 +126,13 @@
       return mmListener();
     }
   };
+
+  if (typeof define === 'function' && define.amd) {
+    define(['mediaCheck'], mediaCheck);
+  } else if (typeof module === 'object' && module.exports) {
+    module.exports = mediaCheck;
+  } else {
+    window.mediaCheck = mediaCheck;
+  }
 
 }).call(this);
